@@ -11,6 +11,7 @@ const Container = styled.div`
 const ChildContainer = styled.div`
     box-shadow: 4px 4px 14px #000;
     border-radius: 1rem;
+    min-height: 100vh;
 `
 
 const HeaderLink = styled(Link)`
@@ -18,13 +19,33 @@ const HeaderLink = styled(Link)`
 `
 
 const HeaderContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10vh;
-  border: 1px dotted;
-  background-color: #eee;
-  margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    border: 1px dotted;
+    background-color: #eee;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 14px #000;
+    border-radius: 1rem;
+`
+
+const FooterContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    border: 1px dotted;
+    background-color: #eee;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 4px 4px 14px #000;
+    border-radius: 1rem;
+    position: fixed;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
 `
 
 const refreshPage = () => {
@@ -44,32 +65,54 @@ const lightTheme = {
 }
 
 const Header = ({ children }) => (
-    <HeaderContainer>
-        <HeaderLink to="/">index</HeaderLink>
-        <HeaderLink to="/motion">motion</HeaderLink>
-        <HeaderLink to="/baseline">baseline</HeaderLink>
-        <HeaderLink to="/ar2agility">ar2agility</HeaderLink>
-        <HeaderLink to="/satori">satori</HeaderLink>
-        {children}
-        <button style={{ position: "absolute", right: "7rem" }} onClick={refreshPage}>Click to reload!</button>
-    </HeaderContainer>
+    <>
+        <HeaderContainer>
+            <HeaderLink to="/">index</HeaderLink>
+            <HeaderLink to="/motion">motion</HeaderLink>
+            <HeaderLink to="/baseline">baseline</HeaderLink>
+            <HeaderLink to="/ar2agility">ar2agility</HeaderLink>
+            <HeaderLink to="/satori">satori</HeaderLink>
+            <HeaderLink to="/award">award</HeaderLink>
+        </HeaderContainer>
+
+    </>
+)
+
+const Footer = ({ children }) => (
+    <>
+        <FooterContainer>
+            {children}
+            <button onClick={refreshPage}>Click to reload!</button>
+        </FooterContainer>
+    </>
 )
 
 export const Layout = ({ children }) => {
     const [currentTheme, setCurrentTheme] = useState("dark")
-    console.log(currentTheme)
-
+    const [innerWidth, setInnerWidth] = useState(window.innerWidth)
+    const [innerHeight, setInnerHeight] = useState(window.innerHeight)
+    window.addEventListener('resize', () => {
+        setInnerWidth(window.innerWidth)
+        setInnerHeight(window.innerHeight)
+    })
     return (
         <ThemeProvider theme={currentTheme === "dark" ? darkTheme : lightTheme}>
             <Container>
                 <Header>
-                    <button onClick={() => {
-                        if (currentTheme === "dark") setCurrentTheme("light")
-                        else setCurrentTheme("dark")
-                    }}>Change Theme</button></Header>
+
+                </Header>
                 <ChildContainer>
                     {children}
                 </ChildContainer>
+                <Footer>
+                <span style={{ position: "absolute", left: "2rem" }}>
+                        Width:{innerWidth} : Height:{innerHeight}
+                    </span>
+                    <button onClick={() => {
+                        if (currentTheme === "dark") setCurrentTheme("light")
+                        else setCurrentTheme("dark")
+                    }}>Change Theme</button>
+                </Footer>
             </Container>
         </ThemeProvider>
     )
