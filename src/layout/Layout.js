@@ -49,6 +49,7 @@ const Header = ({ children }) => (
         <HeaderLink to="/motion">motion</HeaderLink>
         <HeaderLink to="/baseline">baseline</HeaderLink>
         <HeaderLink to="/ar2agility">ar2agility</HeaderLink>
+        <HeaderLink to="/satori">satori</HeaderLink>
         {children}
         <button style={{ position: "absolute", right: "7rem" }} onClick={refreshPage}>Click to reload!</button>
     </HeaderContainer>
