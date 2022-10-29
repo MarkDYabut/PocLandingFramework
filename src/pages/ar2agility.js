@@ -14,7 +14,8 @@ const Container = styled.div`
 `
 
 const CenteredDiv = styled.div`
-  margin: 3rem auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 800px;
   display: flex;
   flex-direction: column;
@@ -133,8 +134,8 @@ const MotionStyledHeader = ({ children }) => {
         transition: { duration: 2 }
       }}
     >
-      <hr />
       <StyledHeaderTitle>
+        <hr />
         {children}
       </StyledHeaderTitle>
     </motion.div>

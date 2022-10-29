@@ -18,6 +18,7 @@ const StyledBody = styled.body`
   font-family: sans-serif;
   padding: 0;
   margin: 0;
+  border-radius: 10px;
 `
 
 const StyledSection = styled.section`
@@ -27,6 +28,7 @@ const StyledSection = styled.section`
   align-content: center;
   min-height: 100vh;
   padding: 4rem;
+  border-radius: 10px;
 `
 
 const StyledCard = styled.div`
