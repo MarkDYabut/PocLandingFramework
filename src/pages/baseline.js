@@ -52,7 +52,7 @@ const MotionSection = ({ children }) => {
         whileInView={{
           opacity: 1,
           x: 0,
-          transition: { duration: 2}
+          transition: { duration: 2 }
         }}
       >
         {children}
@@ -67,7 +67,7 @@ const MotionSection = ({ children }) => {
             opacity: [1, 1, 1, 1],
             y: [30, 150, 30, 0],
             rotate: [180, 0, 0, 0],
-            transition: { duration: 2}
+            transition: { duration: 2 }
           }}
         >
           <StyledCard style={{ backgroundImage: `url(${gifs[count]})` }} />

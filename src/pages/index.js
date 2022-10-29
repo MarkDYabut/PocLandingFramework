@@ -13,22 +13,23 @@ const Container = styled.div`
 `
 
 const MyComponent1 = (props) => {
-  console.log("MyComponent")
+  console.log("MyComponent1")
   console.log(props)
+  const [isAnimating, setIsAnimating] = useState(false)
 
   return (
     <>
+      <div>hello world</div>
     </>
   )
 }
 
-export default function Home() {
+export default function BuildSomethingNew() {
   console.log("Hello World")
 
   return (
     <Layout>
-      <div>hello world</div>
-
+      <MyComponent1 />
     </Layout>
   )
 }
