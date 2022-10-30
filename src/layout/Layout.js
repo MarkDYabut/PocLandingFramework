@@ -87,13 +87,16 @@ const Footer = ({ children }) => (
 )
 
 export const Layout = ({ children }) => {
+    const isBrowser = typeof window !== "undefined"
     const [currentTheme, setCurrentTheme] = useState("light")
-    const [innerWidth, setInnerWidth] = useState(window.innerWidth)
-    const [innerHeight, setInnerHeight] = useState(window.innerHeight)
-    window.addEventListener('resize', () => {
-        setInnerWidth(window.innerWidth)
-        setInnerHeight(window.innerHeight)
-    })
+    const [innerWidth, setInnerWidth] = useState(0)
+    const [innerHeight, setInnerHeight] = useState(0)
+
+    // if (window)
+    //     window.addEventListener('resize', () => {
+    //         setInnerWidth(window.innerWidth)
+    //         setInnerHeight(window.innerHeight)
+    //     })
     return (
         <ThemeProvider theme={currentTheme === "dark" ? darkTheme : lightTheme}>
             <Container>
@@ -103,18 +106,20 @@ export const Layout = ({ children }) => {
                 <ChildContainer>
                     {children}
                 </ChildContainer>
-                <Footer>
-                    <span style={{ position: "absolute", left: "2rem" }}>
-                        Width:{innerWidth} 💻 Height:{innerHeight}
-                    </span>
-                    <button onClick={() => {
-                        if (currentTheme === "dark") setCurrentTheme("light")
-                        else setCurrentTheme("dark")
-                    }}>Change Theme</button>
-                    <button onClick={refreshPage}>Reload page</button>
-                    <button onClick={() => { window.scrollTo({top: 0, left: 0, behavior: 'smooth'}); }}>Scroll to top</button>
-                    <button onClick={() => { window.scrollTo({bottom: window.scroll, left: 0, behavior: 'smooth'}); }}>Scroll to bottom</button>
-                </Footer>
+                {isBrowser && (
+                    <Footer>
+                        <span style={{ position: "absolute", left: "2rem" }}>
+                            Width:{innerWidth} 💻 Height:{innerHeight}
+                        </span>
+                        <button onClick={() => {
+                            if (currentTheme === "dark") setCurrentTheme("light")
+                            else setCurrentTheme("dark")
+                        }}>Change Theme</button>
+                        <button onClick={refreshPage}>Reload page</button>
+                        {/* <button onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }); }}>Scroll to top</button>
+                        <button onClick={() => { window.scrollTo({ bottom: window.scroll, left: 0, behavior: 'smooth' }); }}>Scroll to bottom</button> */}
+                    </Footer>
+                )}
             </Container>
         </ThemeProvider>
     )
