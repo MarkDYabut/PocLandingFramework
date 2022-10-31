@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { Link } from 'gatsby'
 import { createGlobalStyle } from 'styled-components'
@@ -217,13 +217,23 @@ const Footer = ({ children }) => (
 )
 
 export const Layout = ({ children }) => {
-    const [currentTheme, setCurrentTheme] = useState("dark")
-    const [innerWidth, setInnerWidth] = useState(window.innerWidth)
-    const [innerHeight, setInnerHeight] = useState(window.innerHeight)
-    window.addEventListener('resize', () => {
+    const isBrowser = typeof window !== "undefined"
+    const [currentTheme, setCurrentTheme] = useState("light")
+    const [innerWidth, setInnerWidth] = useState(0)
+    const [innerHeight, setInnerHeight] = useState(0)
+
+    useEffect(() => {
+        console.log("hi")
         setInnerWidth(window.innerWidth)
         setInnerHeight(window.innerHeight)
-    })
+        window.addEventListener('resize', () => {
+            setInnerWidth(window.innerWidth)
+            setInnerHeight(window.innerHeight)
+        })
+    },[])
+
+
+
     return (
         <>
             <GlobalStyle />
@@ -242,6 +252,9 @@ export const Layout = ({ children }) => {
                             if (currentTheme === "dark") setCurrentTheme("light")
                             else setCurrentTheme("dark")
                         }}>Change Theme</button>
+                        <button onClick={refreshPage}>Reload page</button>
+                        <button onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }); }}>Scroll to top</button>
+                        <button onClick={() => { window.scrollTo({ bottom: window.scroll, left: 0, behavior: 'smooth' }); }}>Scroll to bottom</button>
                     </Footer>
                 </Container>
             </ThemeProvider>
