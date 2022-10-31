@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Layout } from "../layout/aaLayout"
 import { Link } from 'gatsby'
 import { Navbar1 } from "../components/nav/navbar"
+import { RandomElevateMotionOnScroll, RandomMotionOnScroll } from "../components/motion/Random"
 
 
 const colors1 = ["#0d1b2a", "#1b263b", "#415a77", "#778da9"]
@@ -51,7 +52,7 @@ const StyledNavButton = styled.span`
     border-bottom: 1px solid #CCCCCC;
     border-left: 1px solid #CCCCCC;
     border-radius: 1rem;
-
+    z-index: 1;
     &:hover, &:focus {
         color: grey;
         background-color: #333333;
@@ -95,7 +96,7 @@ export default function BuildSomethingNew() {
   const scrollToSection = (elementRef) => {
     console.log(elementRef)
     window.scrollTo({
-      top: elementRef.current.offsetTop,
+      top: elementRef.current.offsetTop - 100,
       left: 0,
       behavior: 'smooth'
     })
@@ -111,7 +112,6 @@ export default function BuildSomethingNew() {
         <NavScrollToButton type="submit" onClick={() => { scrollToSection(contact) }}>Contact</NavScrollToButton>
       </Navbar1>
       <Home refer={home} />
-
       <Vision refer={vision} />
       <Solutions refer={solutions} />
       <Contact refer={contact} />
@@ -119,11 +119,29 @@ export default function BuildSomethingNew() {
   )
 }
 
+const StyledImg = styled.img`
+  max-width: 60vw;
+  padding: 1rem;
+  margin: auto;
+  display: block;
+  z-index: 0;
+  border-radius: 10%;
+`
+
 const Home = (props) => (
   <div ref={props.refer}>
     <StyledSection>
       <h1>A New Era Of Automotive Styling</h1>
       <p>...</p>
+      <RandomMotionOnScroll>
+        <StyledImg src="aa/0001.webp" />
+      </RandomMotionOnScroll>
+      <RandomElevateMotionOnScroll>
+        <StyledImg src="aa/0002.webp" />
+      </RandomElevateMotionOnScroll>
+      <RandomMotionOnScroll>
+        <StyledImg src="aa/0003.webp" />
+      </RandomMotionOnScroll>
     </StyledSection>
   </div>
 )
@@ -134,6 +152,21 @@ const Vision = (props) => (
       <h1>Vision</h1>
       <p>Taking all the guess work out of designing your dream vehicle.</p>
       <p>Modifications made simple.</p>
+      <RandomMotionOnScroll>
+        <StyledImg src="aa/0004.webp" />
+      </RandomMotionOnScroll>
+      <RandomMotionOnScroll>
+        <StyledImg src="aa/0005.webp" />
+      </RandomMotionOnScroll>
+      <RandomElevateMotionOnScroll>
+        <StyledImg src="aa/0006.webp" />
+      </RandomElevateMotionOnScroll>
+      <RandomMotionOnScroll>
+        <StyledImg src="aa/0007.webp" />
+      </RandomMotionOnScroll>
+      <RandomElevateMotionOnScroll>
+        <StyledImg src="aa/0008.webp" />
+      </RandomElevateMotionOnScroll>
     </StyledSection>
   </div>
 )
@@ -146,7 +179,16 @@ const Solutions = (props) => (
       <p>Exterior</p>
       <p>Interior</p>
       <p>Buy&Sell</p>
-    </StyledSection>
+    <RandomMotionOnScroll>
+      <StyledImg src="aa/0014.webp" />
+    </RandomMotionOnScroll>
+    <RandomMotionOnScroll>
+      <StyledImg src="aa/0015.webp" />
+    </RandomMotionOnScroll>
+    <RandomElevateMotionOnScroll>
+      <StyledImg src="aa/0016.webp" />
+    </RandomElevateMotionOnScroll>
+  </StyledSection>
   </div>
 )
 
@@ -155,6 +197,18 @@ const Contact = (props) => (
     <StyledSection>
       <h1>Contact</h1>
       <p>Reach out and collaborate</p>
+    <RandomMotionOnScroll>
+      <StyledImg src="aa/0017.webp" />
+    </RandomMotionOnScroll>
+    <RandomElevateMotionOnScroll>
+      <StyledImg src="aa/0018.webp" />
+    </RandomElevateMotionOnScroll>
+    <RandomMotionOnScroll>
+      <StyledImg src="aa/0019.webp" />
+    </RandomMotionOnScroll>
+    <RandomElevateMotionOnScroll>
+      <StyledImg src="aa/0020.webp" />
+    </RandomElevateMotionOnScroll>
     </StyledSection>
   </div>
 )

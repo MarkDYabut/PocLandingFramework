@@ -15,7 +15,7 @@ const Nav = styled.div`
     height: 4rem;
 
     /* box-shadow: 4px 4px 14px #000; */
-
+    z-index: 1000;
     margin-bottom: 2rem;
     position: fixed;
     top: 1rem;

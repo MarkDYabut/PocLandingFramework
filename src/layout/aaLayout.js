@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import { Link } from 'gatsby'
 import { createGlobalStyle } from 'styled-components'
 import { Navbar1 } from '../components/nav/navbar'
+import { motion } from "framer-motion"
 
 const GlobalStyle = createGlobalStyle`
     * {    
@@ -11,6 +12,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Courier New', Courier, monospace;
         font-style: italic;
     }
+    html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 `
 
 const FooterContainer = styled.div`
@@ -65,8 +70,10 @@ const Footer = ({ children }) => (
 
 export const Layout = ({ children }) => {
     const [currentTheme, setCurrentTheme] = useState("light")
+    const [seed, setSeed] = useState(1)
+
     return (
-        <>
+        <motion.div key={seed} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
             <ThemeProvider theme={currentTheme === "dark" ? darkTheme : lightTheme}>
                 <GlobalStyle />
                 <Container>
@@ -74,6 +81,8 @@ export const Layout = ({ children }) => {
                     {children}
                     <Footer>
                         <button onClick={() => {
+                                    setSeed(Math.random())
+
                             if (currentTheme === "dark") setCurrentTheme("light")
                             else setCurrentTheme("dark")
                         }}>Change Theme</button>
@@ -81,6 +90,6 @@ export const Layout = ({ children }) => {
                     </Footer>
                 </Container>
             </ThemeProvider>
-        </>
+        </motion.div>
     )
 }
