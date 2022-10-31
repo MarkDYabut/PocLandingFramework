@@ -104,7 +104,6 @@ export default function BuildSomethingNew() {
     <Layout>
       <Marquee marqueeText={"build some new shit. "}>
       </Marquee>
-      {window.innerWidth}
       <button onClick={() => { setSize(size + 100) }}>+</button>
       <button onClick={() => { setSize(size - 100) }}>-</button>
       {Array(32).fill(0).map(svgID => {
