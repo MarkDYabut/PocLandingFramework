@@ -5,8 +5,9 @@
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
+    "d": "gatsby clean && gatsby develop --host=0.0.0.0",
     "build": "gatsby build",
-    "develop": "gatsby develop --host=0.0.0.0",
+    "develop": "gatsby clean && gatsby develop --host=0.0.0.0",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",
@@ -18,6 +19,7 @@
     "gatsby": "^4.24.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-transition-group": "^4.4.5",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

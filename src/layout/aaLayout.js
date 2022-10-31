@@ -77,7 +77,6 @@ export const Layout = ({ children }) => {
             <ThemeProvider theme={currentTheme === "dark" ? darkTheme : lightTheme}>
                 <GlobalStyle />
                 <Container>
-                    <Navbar1 />
                     {children}
                     <Footer>
                         <button onClick={() => {
